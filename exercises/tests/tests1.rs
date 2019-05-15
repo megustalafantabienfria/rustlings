@@ -10,7 +10,8 @@
 mod tests {
     #[test]
     fn you_can_assert() {
-        assert!();
+        let x = "I dont know";
+        assert!(x == "I dont know");
     }
 }
 
