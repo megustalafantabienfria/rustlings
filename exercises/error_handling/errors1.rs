@@ -4,13 +4,16 @@
 // was, instead of just sometimes returning `None`. The 2nd test currently
 // does not compile or pass, but it illustrates the behavior we would like
 // this function to have.
-// Scroll down for hints!!!
+// Execute `rustlings hint errors1` for hints!
 
-pub fn generate_nametag_text(name: String) -> Result<String, String> {
+// I AM NOT DONE
+
+pub fn generate_nametag_text(name: String) -> Option<String> {
     if name.len() > 0 {
-        Ok(format!("Hi! My name is {}", name))
+        Some(format!("Hi! My name is {}", name))
     } else {
-        Err(String::from("`name` was empty; it must be nonempty."))
+        // Empty names aren't allowed.
+        None
     }
 }
 
@@ -25,7 +28,7 @@ mod tests {
     fn generates_nametag_text_for_a_nonempty_name() {
         assert_eq!(
             generate_nametag_text("Beyoncé".into()),
-            Ok("Hi! My name is Beyoncé".into())
+            Some("Hi! My name is Beyoncé".into())
         );
     }
 
@@ -37,36 +40,3 @@ mod tests {
         );
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// `Err` is one of the variants of `Result`, so what the 2nd test is saying
-// is that `generate_nametag_text` should return a `Result` instead of an
-// `Option`.
-
-// To make this change, you'll need to:
-// - update the return type in the function signature to be a Result that
-//   could be the variants `Ok(String)` and `Err(String)`
-// - change the body of the function to return `Ok(stuff)` where it currently
-//   returns `Some(stuff)`
-// - change the body of the function to return `Err(error message)` where it
-//   currently returns `None`
-// - change the first test to expect `Ok(stuff)` where it currently expects
-//   `Some(stuff)`.
